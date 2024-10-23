@@ -1,4 +1,3 @@
-import java.util.Currency;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -71,6 +70,7 @@ public class Game {
                         System.out.println("Você já pegou a forma.");
                     }
                     break;
+
                 case "GET BATEDEIRA":
                     if (!inventario.contains("BATEDEIRA")) {
                         inventario.add("BATEDEIRA");
@@ -79,6 +79,7 @@ public class Game {
                         System.out.println("Você já pegou a batedeira.");
                     }
                     break;
+
                 case "GET TIGELA":
                     if (!inventario.contains("TIGELA")) {
                         inventario.add("TIGELA");
@@ -87,32 +88,40 @@ public class Game {
                         System.out.println("Você já pegou a tigela.");
                     }
                     break;
+
                 default:
                     System.out.println("COMANDO INVÁLIDO. Tente pegar a FORMA, BATEDEIRA ou TIGELA.");
                     break;
             }
-        }
 
+        }
         System.out.println("Todos os utensílios foram coletados");
+
+         currentScene = "Cena3";
     }
+
     private void cena3(Scanner scanner) {
         System.out.println("Sobre a mesa ele posicionou tudo que seria utilizado para preparação de seu bolo.");
         System.out.println("Percebeu que com aqueles ingredientes, só seria possivel a realização de um bolinho simples :( ");
         System.out.println("Como sua intenção era agradar a sua mãe, decidiu então fazer uma deliciosa cobertura!!! ");
         System.out.println("Mas ficou indeciso sobre usar CREME DE NINHO ou CHOCOLATE.");
 
-        while (true) {
-            String comando = scanner.nextLine().toUpperCase();
-            if (comando.equals("USE CHOCOLATE")) {
-                System.out.println("Vishhhh, mas a mamãe não gosta de cobertura de chocolate!!!!");
-            } else if (comando.equals("USE CREME DE NINHO")) {
-                System.out.println("Creme de Ninho é a favorita da mamãe!!!.");
-                break;
-            } else {
-                System.out.println("COMANDO INVALIDO");
+            while(true) {
+                String comando = scanner.nextLine().toUpperCase();
+
+                if (comando.equals("USE CHOCOLATE")) {
+                    System.out.println("Vishhhh, mas a mamãe não gosta de cobertura de chocolate!!!!");
+                } else if (comando.equals("USE CREME DE NINHO")) {
+                    System.out.println("Creme de Ninho é a favorita da mamãe!!!.");
+                    currentScene = "Cena4";
+                    break;
+                } else {
+                    System.out.println("COMANDO INVALIDO");
+                }
             }
-        }
+
     }
+
 
     private void cena4(Scanner scanner) {
         System.out.println("José então decide partir para a preparação do bolo...");
@@ -139,10 +148,11 @@ public class Game {
 
             if (!comandoValido) {
                 System.out.println("PRESTA ATENÇÃO AMIGUINHO...");
+
             }
         }
-
         System.out.println("Você misturou tudo com a batedeira.");
+        currentScene = "Cena5";
     }
 
     private void cena5(Scanner scanner) {
@@ -152,7 +162,7 @@ public class Game {
 
         while (true) {
             String comando = scanner.nextLine().toUpperCase();
-            if (comando.equals("USE CREME_DE_NINHO")) {
+            if (comando.equals("USE CREME DE NINHO")) {
                 System.out.println("Cobertura Finalizada...");
                 System.out.println("PRONTINHO... AGORA É SÓ SABOREAR ESSE DELICIOSO BOLINHO!!!");
                 break;
@@ -164,4 +174,3 @@ public class Game {
         System.exit(0);
     }
 }
-
